@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet id="1" author="vladi">
+
+		<createTable tableName="addresses">
+			<column name="id" type="int">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="street" type="varchar(300)">
+				<constraints nullable="false" />
+			</column>
+			<column name="city" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="users">
+			<column name="id" type="int">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="addressId" type="int">
+				<constraints nullable="false"
+					foreignKeyName="user_address" references="addresses(id)" />
+			</column>
+		</createTable>
+
+		<createTable tableName="phoneNumbers">
+			<column name="id" type="int">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="phoneNumber" type="varchar(300)">
+				<constraints nullable="false" />
+			</column>
+			<column name="userId" type="int">
+				<constraints nullable="false"
+					foreignKeyName="phoneNumber_owner" references="users(id)" />
+			</column>
+		</createTable>
+	</changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,8 @@
+vladi\User.class
+vladi\SystemConfigurator.class
+vladi\UserSerializer.class
+vladi\Address.class
+vladi\RestApp.class
+vladi\DBSerializer.class
+vladi\App.class
+vladi\UsersResource.class
